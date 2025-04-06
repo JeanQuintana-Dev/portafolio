@@ -4,12 +4,39 @@
     background-color: #e6d5c7;
     font-family: 'Courier New', Courier, monospace;
 }
+.footer{
+    background-color: #761a20;
+    color: #e6d5c7;
+    font-family: 'Courier New', Courier, monospace;
+}
+.a{
+    color: #e6d5c7;
+    text-decoration: underline;
+    font-family: 'Courier New', Courier, monospace;
+}
+.a:hover{
+    color: #bba18c;
+    text-decoration: underline;
+}
+.border-bottom-primary{
+    border-bottom: 1px solid #761a20;
+}
 
 .perfil{
     height: 30rem;
     width: 30rem;
-    border-radius: 100%;    
+    border-radius: 50%;
+    border: 5px solid #761a2060;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+.universidad{
+    height: 40rem;
+    width: 40rem;
+    border-radius: 20%;
+    border: 5px solid #68686856;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 .btn-primary{
     --bs-btn-color: #e6d5c7;
     --bs-btn-bg: #761a20;
