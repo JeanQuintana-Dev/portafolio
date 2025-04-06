@@ -1,0 +1,16 @@
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e6d5c7;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.navbar-brand:hover {
+    color: #e6d5c7;
+    text-decoration: underline;
+}
+.navbar {
+    background-color: #761a20;
+     border-bottom-left-radius: 10%;
+     border-bottom-right-radius: 10%;
+}
