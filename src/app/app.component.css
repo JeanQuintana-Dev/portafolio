@@ -1,5 +1,6 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
+
 .main{
     background-color: #e6d5c7;
     font-family: 'Courier New', Courier, monospace;
@@ -69,4 +70,11 @@
     --bs-btn-disabled-bg: transparent;
     --bs-btn-disabled-border-color: #6c757d;
     --bs-gradient: none;
+}
+
+.bounce{
+    z-index: 1;
+    display: inline-block;
+    animation-duration: 4.5s; 
+    animation-iteration-count: infinite;
 }
