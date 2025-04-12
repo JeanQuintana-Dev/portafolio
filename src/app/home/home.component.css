@@ -1,0 +1,117 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+.a{
+    color: #e6d5c7;
+    text-decoration: underline;
+    font-family: 'Courier New', Courier, monospace;
+}
+.a:hover{
+    color: #bba18c;
+    text-decoration: underline;
+}
+.border-bottom-primary{
+    border-bottom: 1px solid #761a20;
+}
+
+.perfil{
+    height: 30rem;
+    width: 30rem;
+    border-radius: 50%;
+    border: 5px solid #761a2060;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.universidad{
+    height: 40rem;
+    width: 40rem;
+    border-radius: 20%;
+    border: 5px solid #68686856;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary{
+    --bs-btn-color: #e6d5c7;
+    --bs-btn-bg: #761a20;
+    --bs-btn-border-color: #761a20;
+    --bs-btn-hover-color: #e6d5c7;
+    --bs-btn-hover-bg: #811c23;
+    --bs-btn-hover-border-color: #69171c;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #e6d5c7;
+    --bs-btn-active-bg: #69171c;
+    --bs-btn-active-border-color: #581318;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #e6d5c7;
+    --bs-btn-disabled-bg: #761a20;
+    --bs-btn-disabled-border-color: #761a20;
+}
+
+.btn-second{
+    --bs-btn-color: #6c757d;
+    --bs-btn-border-color: #6c757d;
+    --bs-btn-hover-color: #e6d5c7;
+    --bs-btn-hover-bg: #6c757d;
+    --bs-btn-hover-border-color: #6c757d;
+    --bs-btn-focus-shadow-rgb: 108, 117, 125;
+    --bs-btn-active-color: #e6d5c7;
+    --bs-btn-active-bg: #6c757d;
+    --bs-btn-active-border-color: #6c757d;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #6c757d;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #6c757d;
+    --bs-gradient: none;
+}
+
+.bounce{
+    z-index: 1;
+    display: inline-block;
+    animation-duration: 4.5s; 
+    animation-iteration-count: infinite;
+}
+
+/* Definición de animaciones */
+@keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Clases para las animaciones */
+  .animate-on-scroll {
+    opacity: 0;
+    animation-fill-mode: forwards;
+    
+    &.animated {
+      animation-duration: 0.8s;
+      animation-timing-function: ease-out;
+      
+      &.fade-up {
+        animation-name: fadeInUp;
+      }
+      
+      &.fade-left {
+        animation-name: fadeInLeft;
+      }
+    }
+    
+    /* Delays para efectos escalonados */
+    &.delay-1 { animation-delay: 0.2s; }
+    &.delay-2 { animation-delay: 0.4s; }
+    &.delay-3 { animation-delay: 0.6s; }
+  }
