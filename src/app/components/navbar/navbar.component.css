@@ -14,3 +14,39 @@
      border-bottom-left-radius: 10%;
      border-bottom-right-radius: 10%;
 }
+
+.nav-item {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e6d5c7;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.nav-item:hover {
+    color: #bba18c;
+    text-decoration: underline;
+}
+
+.nav-link {
+    color: #e6d5c7;
+    font-family: 'Courier New', Courier, monospace;
+}
+.nav-link:hover {
+    color: #bba18c;
+}
+
+.icon {
+    color: #e6d5c7;
+    font-size: 2rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+.icon:hover {
+    color: #bba18c;
+
+}
+.moon{
+    color: #e6d5c7;
+    font-size: 1.5rem;
+}
+
