@@ -1,11 +1,9 @@
-.main{
-    background-color: #e6d5c7;
-    font-family: 'Courier New', Courier, monospace;
+:host {
+  display: block;
 }
 
-.footer{
-    background-color: #761a20;
-    color: #e6d5c7;
-    font-family: 'Courier New', Courier, monospace;
+.site-shell {
+  min-height: 100vh;
+  background: var(--surface);
+  color: var(--text);
 }
-   
