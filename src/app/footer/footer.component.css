@@ -4,8 +4,11 @@
 
 .site-footer {
   padding: 5rem 0 2rem;
-  background: #181420;
+  background:
+    radial-gradient(circle at 90% 18%, rgba(136, 50, 53, 0.24), transparent 30%),
+    var(--brand-dark);
   color: #fff;
+  border-top: 4px solid var(--brand-wine);
 }
 
 .footer-grid {
@@ -51,7 +54,7 @@
 .footer-actions a:focus,
 .footer-bottom a:hover,
 .footer-bottom a:focus {
-  color: #fff;
+  color: var(--brand-lilac);
 }
 
 .footer-bottom {
