@@ -1,52 +1,81 @@
-.navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #e6d5c7;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.navbar-brand:hover {
-    color: #e6d5c7;
-    text-decoration: underline;
-}
 .navbar {
-    background-color: #761a20;
-     border-bottom-left-radius: 10%;
-     border-bottom-right-radius: 10%;
+  background: rgba(24, 20, 32, 0.96);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  padding: 0.65rem 0;
 }
 
-.nav-item {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #e6d5c7;
-    font-family: 'Courier New', Courier, monospace;
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
 }
 
-.nav-item:hover {
-    color: #bba18c;
-    text-decoration: underline;
+.navbar-brand img {
+  width: 92px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  color: var(--accent-soft);
 }
 
 .nav-link {
-    color: #e6d5c7;
-    font-family: 'Courier New', Courier, monospace;
-}
-.nav-link:hover {
-    color: #bba18c;
-}
-
-.icon {
-    color: #e6d5c7;
-    font-size: 2rem;
-    margin-right: 1rem;
-    margin-left: 1rem;
-}
-.icon:hover {
-    color: #bba18c;
-
-}
-.moon{
-    color: #e6d5c7;
-    font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.94rem;
+  font-weight: 650;
+  margin: 0 0.25rem;
+  padding: 0.65rem 0.55rem;
 }
 
+.nav-link:hover,
+.nav-link:focus {
+  color: #fff;
+}
+
+.social-links {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.social-links a {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1.15rem;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+  background: var(--accent);
+  transform: translateY(-2px);
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    padding: 1rem 0 0.5rem;
+  }
+
+  .social-links {
+    margin-top: 0.75rem;
+  }
+}

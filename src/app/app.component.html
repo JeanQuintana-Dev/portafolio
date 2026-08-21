@@ -1,13 +1,8 @@
-<main class="main">
-  <header>
-    <app-navbar></app-navbar>
-  </header>
-  <body>
+<div class="site-shell">
+  <app-navbar></app-navbar>
+  <main>
     <app-home></app-home>
-  </body>
-  <footer class="footer py-3" bis_skin_checked="1">
-    <app-footer></app-footer>
-  </footer>
-  <app-whatsapp class="position-relative"></app-whatsapp>
-</main>
-<router-outlet />
+  </main>
+  <app-footer></app-footer>
+  <app-whatsapp></app-whatsapp>
+</div>
