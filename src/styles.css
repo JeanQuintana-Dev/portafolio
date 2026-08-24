@@ -1,19 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
+  color-scheme: light;
   --surface: #fffaf8;
   --surface-muted: #f6ecea;
+  --surface-card: #ffffff;
   --text: #281c23;
   --text-muted: #705f67;
   --border: #ead8d7;
-  --brand-dark: #1c1824;
-  --brand-dark-soft: #211d29;
+  --brand-dark: #2d0b12;
+  --brand-dark-soft: #42131c;
   --brand-wine: #883235;
   --brand-wine-dark: #681920;
-  --brand-lilac: #c3adff;
+  --brand-wine-soft: #efb9bf;
+  --navbar-bg: rgba(45, 11, 18, 0.97);
+  --card-shadow: rgba(88, 30, 39, 0.09);
   --accent: var(--brand-wine);
   --accent-dark: var(--brand-wine-dark);
-  --accent-soft: var(--brand-lilac);
+  --accent-soft: var(--brand-wine-soft);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --surface: #18080c;
+  --surface-muted: #230d12;
+  --surface-card: #2b1117;
+  --text: #fff7f4;
+  --text-muted: #d5b9bd;
+  --border: #51242c;
+  --brand-dark: #21080e;
+  --brand-dark-soft: #3b1019;
+  --brand-wine: #a94a50;
+  --brand-wine-dark: #d77b83;
+  --brand-wine-soft: #f2b6bc;
+  --navbar-bg: rgba(30, 7, 12, 0.97);
+  --card-shadow: rgba(0, 0, 0, 0.28);
 }
 
 html {
@@ -26,6 +47,7 @@ body {
   color: var(--text);
   font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 *,
