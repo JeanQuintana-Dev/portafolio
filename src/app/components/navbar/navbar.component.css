@@ -84,6 +84,11 @@
   transform: translateY(-2px) rotate(8deg);
 }
 
+.theme-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
 .social-links {
   display: flex;
   gap: 0.55rem;
