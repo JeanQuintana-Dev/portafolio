@@ -54,7 +54,7 @@
 .footer-actions a:focus,
 .footer-bottom a:hover,
 .footer-bottom a:focus {
-  color: var(--brand-lilac);
+  color: var(--accent-soft);
 }
 
 .footer-bottom {
