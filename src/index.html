@@ -4,8 +4,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Portafolio profesional de Jean Quintana, Ingeniero de Sistemas y Analista de Datos especializado en Power BI, automatización, Python y desarrollo web.">
-  <meta name="theme-color" content="#181420">
+  <meta name="theme-color" content="#2d0b12">
   <title>Jean Quintana | Analista de Datos y Desarrollador</title>
+  <script>
+    (() => {
+      const savedTheme = localStorage.getItem('jcqm-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme === 'light' || savedTheme === 'dark'
+        ? savedTheme
+        : (prefersDark ? 'dark' : 'light');
+
+      document.documentElement.dataset['theme'] = theme;
+      document.querySelector('meta[name="theme-color"]')
+        ?.setAttribute('content', theme === 'dark' ? '#18080c' : '#2d0b12');
+    })();
+  </script>
   <script src="https://kit.fontawesome.com/70be53157f.js" crossorigin="anonymous"></script>
 </head>
 <body>
