@@ -8,9 +8,9 @@
   padding: 7rem 0 6rem;
   color: #fff;
   background:
-    radial-gradient(circle at 84% 18%, rgba(195, 173, 255, 0.3), transparent 34%),
+    radial-gradient(circle at 84% 18%, rgba(169, 74, 80, 0.34), transparent 34%),
     radial-gradient(circle at 12% 84%, rgba(136, 50, 53, 0.42), transparent 34%),
-    linear-gradient(135deg, var(--brand-dark) 0%, #241821 58%, var(--brand-dark-soft) 100%);
+    linear-gradient(135deg, var(--brand-dark) 0%, #351019 58%, var(--brand-dark-soft) 100%);
 }
 
 .hero::after {
@@ -81,8 +81,8 @@
 
 .btn-outline-light:hover,
 .btn-outline-light:focus {
-  border-color: var(--brand-lilac);
-  background: var(--brand-lilac);
+  border-color: var(--accent-soft);
+  background: var(--accent-soft);
   color: var(--brand-dark);
 }
 
@@ -97,7 +97,7 @@
 
 .hero-highlights li {
   padding: 0.45rem 0.8rem;
-  border: 1px solid rgba(195, 173, 255, 0.28);
+  border: 1px solid rgba(239, 185, 191, 0.34);
   border-radius: 999px;
   color: rgba(255, 255, 255, 0.72);
   font-size: 0.86rem;
@@ -108,10 +108,10 @@
   width: min(100%, 430px);
   margin-inline: auto;
   padding: 14px;
-  border: 2px solid rgba(195, 173, 255, 0.42);
+  border: 2px solid rgba(239, 185, 191, 0.48);
   border-radius: 50%;
-  background: linear-gradient(145deg, rgba(136, 50, 53, 0.6), rgba(195, 173, 255, 0.16));
-  box-shadow: 0 24px 70px rgba(104, 25, 32, 0.24), 0 0 42px rgba(195, 173, 255, 0.1);
+  background: linear-gradient(145deg, rgba(136, 50, 53, 0.72), rgba(239, 185, 191, 0.14));
+  box-shadow: 0 24px 70px rgba(104, 25, 32, 0.3), 0 0 42px rgba(136, 50, 53, 0.16);
 }
 
 .portrait {
@@ -121,7 +121,7 @@
   aspect-ratio: 1;
   border-radius: 50%;
   object-fit: cover;
-  background: #efe6ef;
+  background: #f3e4e2;
 }
 
 .section {
@@ -162,8 +162,8 @@
 .project-card {
   border: 1px solid var(--border);
   border-radius: 22px;
-  background: #fff;
-  box-shadow: 0 14px 38px rgba(64, 27, 36, 0.08);
+  background: var(--surface-card);
+  box-shadow: 0 14px 38px var(--card-shadow);
 }
 
 .skill-card {
@@ -210,10 +210,14 @@
 }
 
 .project-featured {
-  border-color: rgba(195, 173, 255, 0.24);
-  background: linear-gradient(140deg, var(--brand-wine-dark) 0%, #421b29 45%, var(--brand-dark-soft) 100%);
+  border-color: rgba(169, 74, 80, 0.42);
+  background: linear-gradient(140deg, #681920 0%, #4a111c 45%, var(--brand-dark-soft) 100%);
   color: #fff;
   box-shadow: 0 18px 46px rgba(104, 25, 32, 0.24);
+}
+
+:host-context([data-theme='dark']) .portrait {
+  background: #35131a;
 }
 
 .project-featured > p:not(.project-type) {

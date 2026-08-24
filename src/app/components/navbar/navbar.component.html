@@ -4,10 +4,19 @@
       <img src="logo-jcqm-dev.svg" alt="Logo JCQM.DEV de Jean Quintana" width="240" height="58">
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation"
-      aria-controls="mainNavigation" aria-expanded="false" aria-label="Abrir menú de navegación">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="navbar-actions">
+      <button class="theme-toggle" type="button" (click)="toggleTheme()"
+        [attr.aria-label]="theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'"
+        [attr.title]="theme === 'dark' ? 'Modo claro' : 'Modo oscuro'">
+        <span class="theme-icon" aria-hidden="true">{{ theme === 'dark' ? '☀' : '☾' }}</span>
+        <span class="visually-hidden">{{ theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro' }}</span>
+      </button>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation"
+        aria-controls="mainNavigation" aria-expanded="false" aria-label="Abrir menú de navegación">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
 
     <div class="collapse navbar-collapse" id="mainNavigation">
       <ul class="navbar-nav ms-auto align-items-lg-center">
