@@ -8,7 +8,7 @@
       <button class="theme-toggle" type="button" (click)="toggleTheme()"
         [attr.aria-label]="theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'"
         [attr.title]="theme === 'dark' ? 'Modo claro' : 'Modo oscuro'">
-        <i [class]="theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon'" aria-hidden="true"></i>
+        <span class="theme-icon" aria-hidden="true">{{ theme === 'dark' ? '☀' : '☾' }}</span>
         <span class="visually-hidden">{{ theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro' }}</span>
       </button>
 
