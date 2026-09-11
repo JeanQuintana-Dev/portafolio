@@ -8,7 +8,7 @@ import { afterNextRender, Component, ElementRef, NgZone, OnDestroy, ViewChild } 
         <video #player muted loop playsinline preload="auto" poster="/anime-jean-poster.webp"
           aria-label="Jean en anime 2D: programa frente a tres pantallas, revisa su trabajo, te mira, sonríe y saluda antes de continuar."
           (loadeddata)="onReady()" (error)="failed = true">
-          <source src="/anime-jean-smooth.mp4" type="video/mp4">
+          <source src="/Jean-anime-bucle.mp4" type="video/mp4">
         </video>
         <p class="error" [hidden]="!failed" role="status">No se pudo cargar la animación.</p>
       </div>
