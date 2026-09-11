@@ -5,7 +5,7 @@ import { afterNextRender, Component, ElementRef, NgZone, OnDestroy, ViewChild } 
   template: `
     <div class="studio">
       <div #stage class="stage">
-        <video #player muted loop playsinline preload="auto" poster="/anime-jean-poster.webp"
+        <video #player muted loop playsinline preload="auto" poster="/Jean-anime-portada.webp"
           aria-label="Jean en anime 2D: programa frente a tres pantallas, revisa su trabajo, te mira, sonríe y saluda antes de continuar."
           (loadeddata)="onReady()" (error)="failed = true">
           <source src="/Jean-anime-bucle.mp4" type="video/mp4">
