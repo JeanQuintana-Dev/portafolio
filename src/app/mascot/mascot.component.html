@@ -1,7 +1,7 @@
 <div #actor class="byte-actor" [hidden]="hidden" [class.chat-open]="open" (pointerenter)="engage(true)" (pointerleave)="engage(false)" (focusin)="engage(true)" (focusout)="engage(false)">
   <span class="byte-bubble" aria-hidden="true">{{ bubble }}</span>
   <button #spriteButton class="byte-sprite-button" type="button" (click)="toggleChat()" [attr.aria-expanded]="open" aria-controls="byte-chat" aria-label="Hablar con Byte, la mascota de Jean">
-    <span class="byte-sprite"><app-byte-character [gesture]="gesture" [sequence]="gestureSequence" /></span>
+    <span class="byte-sprite"><app-byte-character [gesture]="gesture" [sequence]="gestureSequence" [active]="!hidden" /></span>
     <span class="byte-shadow" aria-hidden="true"></span><span class="byte-name">BYTE</span>
   </button>
   <button class="hide-byte" type="button" (click)="setHidden(true)" aria-label="Ocultar a Byte" title="Ocultar a Byte">×</button>
@@ -9,7 +9,7 @@
 @if (hidden) { <button type="button" class="restore-byte" (click)="setHidden(false)">🕹️ Mostrar Byte</button> }
 @if (open && !hidden) {
   <section id="byte-chat" role="dialog" aria-label="Chat con Byte sobre Jean" class="byte-chat" [style.left.px]="panelLeft" (keydown.escape)="closeChat()">
-    <header><div class="chat-avatar"><app-byte-character [gesture]="'smile'" /></div><div><h2>Byte <span>compañero de Jean</span></h2><p>Unos píxeles, muchas buenas ideas.</p></div><button #closeButton type="button" (click)="closeChat()" aria-label="Cerrar chat con Byte">×</button></header>
+    <header><div class="chat-avatar"><app-byte-character [animated]="false" /></div><div><h2>Byte <span>compañero de Jean</span></h2><p>Unos píxeles, muchas buenas ideas.</p></div><button #closeButton type="button" (click)="closeChat()" aria-label="Cerrar chat con Byte">×</button></header>
     <div #messagesBox class="messages" role="log" aria-label="Conversación" aria-live="polite" aria-relevant="additions text">
       @for (message of messages; track $index) { <div class="message" [class.mine]="message.author === 'you'"><small>{{ message.author === 'byte' ? 'Byte' : 'Tú' }}</small><p>{{ message.text }}</p></div> }
     </div>
