@@ -26,3 +26,5 @@
 @media(max-width:767.98px){.project-art,:host(.wide) .project-art{height:210px}.portfolio-body,:host(.wide) .portfolio-body{padding:1.5rem}}
 @media(max-width:575.98px){.flow-nodes span{padding:.5rem}:host(.wide) .flow-nodes span{padding:.6rem}}
 @media(prefers-reduced-motion:reduce){.portfolio-card,.portfolio-card:hover,.browser-preview,.portfolio-card:hover .browser-preview{animation:none;transform:none}}
+
+@keyframes enter{from{opacity:.6;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}

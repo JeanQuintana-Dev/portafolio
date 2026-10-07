@@ -1,19 +1,28 @@
-import { afterNextRender, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { afterNextRender, Component, ElementRef, NgZone, OnDestroy, ViewChild } from '@angular/core';
 import type { ShaderInstance } from 'shaders/js';
 
 @Component({
   selector: 'app-ambient',
-  template: '<canvas #canvas aria-hidden="true" style="width:100%;height:100%"></canvas>',
-  styles: [':host{display:block;position:absolute;inset:0;pointer-events:none;opacity:.48}canvas{display:block;transition:opacity .4s}']
+  template: `<canvas #canvas aria-hidden="true" style="width:100%;height:100%"></canvas>
+    <button type="button" [hidden]="!ready" (click)="toggle()" [attr.aria-pressed]="paused" [disabled]="reduced">
+      {{ paused || reduced ? 'Fondo en pausa' : 'Pausar fondo' }}
+    </button>`,
+  styles: [':host{display:block;position:absolute;inset:0;pointer-events:none;}canvas{display:block;opacity:.48;transition:opacity .4s}button{position:absolute;right:1rem;top:1rem;z-index:2;pointer-events:auto;border:1px solid #efb9bf60;border-radius:999px;background:#341319;color:#ffe8ec;padding:.45rem .8rem;font-size:.875rem}button[hidden]{display:none}']
 })
 export class AmbientComponent implements OnDestroy {
   @ViewChild('canvas') canvas!: ElementRef<HTMLCanvasElement>;
+  ready = false;
+  paused = false;
+  reduced = false;
+  private sync = () => {};
   private shader?: ShaderInstance;
   private destroyed = false;
   private cleanup = () => {};
 
-  constructor() { afterNextRender(() => { void this.init(); }); }
+  constructor(private zone: NgZone) { afterNextRender(() => { void this.init(); }); }
   ngOnDestroy() { this.destroyed = true; this.cleanup(); this.shader?.destroy(); }
+
+  toggle() { this.paused = !this.paused; this.sync(); }
 
   private async init() {
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -30,14 +39,17 @@ export class AmbientComponent implements OnDestroy {
           speed: .18, distortion: .65, seed: 7
         } }]
       }, { components: [flowing], disableTelemetry: true, observeElement: false,
-        onError: () => { canvas.style.opacity = '0'; } });
+        onError: () => { canvas.style.opacity = '0'; this.zone.run(() => this.ready = false); } });
       if (this.destroyed) { shader.destroy(); return; }
       this.shader = shader;
+      this.zone.run(() => this.ready = !shader.getFailureReason());
       let visible = true;
       const sync = () => {
-        if (motion.matches || document.hidden || !visible) shader.pause();
+        this.zone.run(() => this.reduced = motion.matches);
+        if (this.paused || motion.matches || document.hidden || !visible) shader.pause();
         else shader.resume();
       };
+      this.sync = sync;
       const resize = new ResizeObserver(() => shader.resize());
       const visibility = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); });
       resize.observe(canvas); visibility.observe(canvas);
