@@ -8,4 +8,12 @@ import type { Project } from '../home/projects';
 })
 export class ProjectCardComponent {
   @Input({ required: true }) project!: Project;
+  get coverLabel(): string {
+    const labels: Record<string, string> = {
+      horus: 'Contratos → CSV', pai: 'Vacunación · Bolívar', pym: 'Ruta de atención · PyM',
+      cups: 'Consulta de servicios', actividades: 'Trabajo en equipo',
+      regional: 'Indicadores regionales', validacion: 'Datos consistentes'
+    };
+    return labels[this.project.id] ?? this.project.title;
+  }
 }

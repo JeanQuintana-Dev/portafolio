@@ -25,7 +25,7 @@ export const projects: Project[] = [
   { id: 'cups', title: 'Buscador de servicios CUPS · Región 3', category: 'Desarrollo web', type: 'Portal de consulta',
     description: 'Consulta de prestadores y servicios por territorio, código CUPS o descripción, con filtros dinámicos y acceso al detalle del servicio.',
     outcome: 'Acceso más directo a la oferta de servicios regional.',
-    tags: ['Apps Script', 'Google Sites', 'UX'], steps: ['Buscar', 'Filtrar', 'Consultar'], url: 'https://sites.google.com/view/consulta-cups-r3/consulta-cups-r3', visual: 'workflow' },
+    tags: ['Buscador CUPS', 'Vercel', 'UX'], steps: ['Buscar', 'Filtrar', 'Consultar'], url: 'https://consulta-prestadores-r3.vercel.app/', visual: 'workflow' },
   { id: 'actividades', title: 'Seguimiento de actividades · Región 3', category: 'Desarrollo web', type: 'Aplicación colaborativa',
     description: 'Tablero compartido para crear, asignar y controlar actividades con persistencia centralizada, orientado a la coordinación del equipo regional.',
     outcome: 'Seguimiento común de tareas y responsabilidades.',
