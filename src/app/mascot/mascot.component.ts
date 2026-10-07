@@ -58,7 +58,7 @@ export class MascotComponent implements OnDestroy {
     if (moving) this.x += Math.sign(remaining) * Math.min(Math.abs(remaining), dt * .032, Math.abs(remaining) * dt * .003);
     const node = this.actor.nativeElement;
     node.style.transform = `translate3d(${this.x.toFixed(2)}px,0,0)`;
-    if (time >= this.gestureUntil) this.setGesture(moving ? 'walk' : this.engaged ? 'smile' : 'idle');
+    if (time >= this.gestureUntil) this.setGesture(moving ? 'walk' : 'idle');
     const rect = node.getBoundingClientRect();
     const desiredX = this.fine ? Math.max(-1.8, Math.min(1.8, (this.pointerX - rect.left - rect.width / 2) / 160)) : 0;
     const desiredY = this.fine ? Math.max(-2, Math.min(2, (this.pointerY - rect.top - rect.height * .44) / 160)) : 0;
