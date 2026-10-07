@@ -3,7 +3,7 @@
 }
 
 .site-footer {
-  padding: 5rem 0 2rem;
+  padding: 3rem 0 1.5rem;
   background:
     radial-gradient(circle at 90% 18%, rgba(136, 50, 53, 0.24), transparent 30%),
     var(--brand-dark);
@@ -14,8 +14,8 @@
 .footer-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(220px, 0.5fr);
-  gap: 3rem;
-  padding-bottom: 4rem;
+  gap: 2rem;
+  padding-bottom: 2.5rem;
 }
 
 .footer-kicker {
