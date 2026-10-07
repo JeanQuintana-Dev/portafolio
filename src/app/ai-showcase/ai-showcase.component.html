@@ -1,0 +1,31 @@
+<section id="inteligencia-artificial" class="ai-section">
+  <div class="container">
+    <div class="ai-layout">
+      <div class="ai-intro">
+        <p class="kicker">IA aplicada</p>
+        <h2>Del contexto<br>al código,<br><span>con criterio.</span></h2>
+        <p class="intro-copy">Integro IA en mi trabajo para construir soluciones, automatizar procesos y dar claridad a los datos.</p>
+        <div class="method" aria-label="Mi proceso: definir, crear y validar">
+          <span><b>01</b> Definir</span><i aria-hidden="true">→</i><span><b>02</b> Crear</span><i aria-hidden="true">→</i><span><b>03</b> Validar</span>
+        </div>
+        <p class="signature">Cada resultado pasa por mi revisión técnica.</p>
+      </div>
+      <div class="ai-cases">
+        <p class="cases-label">Así la llevo a proyectos reales</p>
+        @for (item of cases; track item.title; let index = $index) {
+          <article class="ai-case" [class.expanded]="active === index">
+            <h3><button type="button" (click)="toggle(index)" [attr.aria-expanded]="active === index" [attr.aria-controls]="'ai-detail-' + index">
+              <span class="case-index">0{{ index + 1 }}</span><span class="case-title">{{ item.title }}<small>{{ item.tools }}</small></span><span class="case-toggle" aria-hidden="true">{{ active === index ? '−' : '+' }}</span>
+            </button></h3>
+            <div class="case-detail" [id]="'ai-detail-' + index" [attr.inert]="active === index ? null : ''" [attr.aria-hidden]="active !== index">
+              <div><p>{{ item.detail }}</p><p class="case-result">{{ item.result }}</p>
+                @if (item.url) { <a [href]="item.url" target="_blank" rel="noopener noreferrer">{{ item.link }} <span aria-hidden="true">↗</span></a> }
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+    <div class="training-note"><span class="training-symbol" aria-hidden="true">✦</span><div><p>Formación reciente · agosto–septiembre 2026</p><h3>Inteligencia Artificial Aplicada para FOMAG</h3><span>Prompts, extracción y clasificación de información, apoyo a PQRS y automatización.</span></div></div>
+  </div>
+</section>
