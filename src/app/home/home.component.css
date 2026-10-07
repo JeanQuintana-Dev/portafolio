@@ -35,8 +35,6 @@
 .skill-card:hover{transform:translateY(-4px)}.skill-card i{color:var(--accent-dark);font-size:1.5rem;margin-bottom:1.1rem}
 .skill-card h3,.project-card h3,.timeline-item h3,.ai-training h3{font-size:1.13rem;font-weight:800;line-height:1.4}
 .skill-card p,.project-card>p:not(.project-type),.timeline-item p{color:var(--text-muted);margin:0;line-height:1.7}
-.projects-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}.project-link{display:inline-block;margin-top:1rem}
-.ai-training{border-left:3px solid var(--accent);padding:1.5rem 2rem;background:var(--surface-muted);margin-bottom:1.5rem;border-radius:0 16px 16px 0}.ai-training span{display:block;color:var(--accent-dark);font-size:.875rem;font-weight:750;margin-bottom:.6rem}.ai-training p{color:var(--text-muted);line-height:1.7;margin:0}
 .timeline{border-left:1px solid var(--border);padding-left:2rem}.timeline-item{position:relative;padding:0 0 2.5rem}.timeline-item:last-child{padding-bottom:0}.timeline-item::before{content:'';position:absolute;top:.5rem;left:-2.4rem;width:12px;height:12px;border:3px solid var(--surface);border-radius:50%;background:var(--accent);box-shadow:0 0 0 1px var(--accent)}.timeline-item span{display:block;margin-bottom:.4rem;color:var(--accent-dark);font-size:.875rem;font-weight:800}
 @keyframes enter{from{opacity:.6;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:991.98px){.hero{padding:4rem 0}.workstation-wrap{max-width:540px;margin-top:1rem}app-project-card,app-project-card.wide{grid-column:span 3}.skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.projects-heading{gap:1.5rem}.wide .project-art{height:220px;padding:1.5rem}}
