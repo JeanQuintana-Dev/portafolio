@@ -71,7 +71,7 @@ export class MascotComponent implements OnDestroy {
   perform(value: ByteGesture) {
     this.target = this.x;
     const duration = value === 'yawn' ? 3400 : value === 'wave' ? 2800 : 2400;
-    this.setGesture(value); this.gestureSequence++; this.gestureUntil = performance.now() + duration;
+    this.setGesture(this.reduced ? value === 'think' ? 'think' : 'smile' : value); this.gestureSequence++; this.gestureUntil = performance.now() + duration;
     this.nextGesture = this.gestureUntil + 8000 + Math.random() * 5000;
     this.nextWalk = this.gestureUntil + 1800;
     this.bubble = value === 'yawn' ? 'Pausa de píxeles… ya vuelvo 💤' : value === 'wave' ? '¡Hola! Qué bueno verte 👋' : value === 'think' ? 'Un momento… conectando ideas.' : '¡Me gusta lo que hace Jean!';
