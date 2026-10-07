@@ -1,0 +1,28 @@
+        <article class="portfolio-card" [attr.data-visual]="project.visual">
+          <div class="project-art" aria-hidden="true">
+            @if (project.visual === 'web') {
+              <div class="browser-preview">
+                <div class="browser-chrome"><span></span><span></span><span></span><small>angela-alvarez-psicologia.vercel.app</small></div>
+                <img src="/psicologia-preview.webp" alt="" loading="lazy" width="1280" height="800">
+              </div>
+            } @else {
+              <div class="flow-label">{{ project.visual === 'pipeline' ? 'Esquema del flujo' : 'Estructura del proyecto' }}</div>
+              <div class="flow-nodes">
+                @for (step of project.steps; track step) { <span>{{ step }}</span> }
+              </div>
+              <div class="art-caption">{{ project.tags[0] }}<span>{{ project.category }}</span></div>
+            }
+          </div>
+          <div class="portfolio-body">
+            <p class="project-type">{{ project.type }}</p>
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+            <p class="project-outcome">{{ project.outcome }}</p>
+            <div class="tags">@for (tag of project.tags; track tag) { <span>{{ tag }}</span> }</div>
+            <div class="project-actions">
+              @if (project.url) { <a [href]="project.url" target="_blank" rel="noopener noreferrer" [attr.aria-label]="'Ver proyecto: ' + project.title">Ver proyecto</a> }
+              @if (project.repo) { <a [href]="project.repo" target="_blank" rel="noopener noreferrer" [attr.aria-label]="'Ver código: ' + project.title">Ver código</a> }
+              @if (!project.url) { <span class="internal-project">Proyecto interno · descripción técnica</span> }
+            </div>
+          </div>
+        </article>

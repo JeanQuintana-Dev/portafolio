@@ -1,11 +1,12 @@
 <section id="inicio" class="hero section-anchor">
+  <app-ambient />
   <div class="container">
     <div class="row align-items-center g-5">
       <div class="col-lg-6">
         <p class="eyebrow">Ingeniero de Sistemas · Analista de Datos</p>
-        <h1>Transformo datos y procesos en soluciones digitales útiles.</h1>
+        <h1>Datos que orientan.<br><span>Código que resuelve.</span></h1>
         <p class="hero-copy">
-          Soy Jean Quintana. Diseño tableros, automatizaciones y aplicaciones que convierten información compleja en decisiones claras, con experiencia aplicada al sector salud y administrativo. Integro IA en mi flujo de trabajo para desarrollar, automatizar y resolver problemas con revisión técnica.
+          Soy Jean Quintana. Construyo tableros, automatizaciones y experiencias web que convierten información compleja en soluciones útiles. Combino analítica, desarrollo e IA aplicada con experiencia en salud y gestión regional.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="#proyectos">Ver proyectos</a>
@@ -18,8 +19,28 @@
         </ul>
       </div>
       <div class="col-lg-6 text-center">
-        <app-workstation />
+        <div class="workstation-wrap"><app-workstation /><div class="studio-note"><span>Mi espacio de trabajo</span><strong>Desarrollo + datos + creatividad</strong></div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="proyectos" class="section section-muted section-anchor">
+  <div class="container">
+    <div class="section-heading projects-heading">
+      <div><p class="eyebrow">Selección de trabajo · 2026</p><h2>Del problema<br>al proyecto.</h2></div>
+      <p>Desarrollo web, integración de APIs y analítica para procesos reales. Cada proyecto parte de una necesidad y termina en una herramienta útil.</p>
+    </div>
+    <div class="project-filters" role="group" aria-label="Filtrar proyectos por especialidad">
+      @for (item of categories; track item) {
+        <button type="button" [attr.aria-pressed]="category === item" (click)="selectCategory(item)">{{ item }}</button>
+      }
+    </div>
+    <p class="project-count" aria-live="polite">{{ visibleProjects.length }} proyectos · {{ category }}</p>
+    <div class="portfolio-grid">
+      @for (project of visibleProjects; track project.id) {
+        <app-project-card [project]="project" />
+      }
     </div>
   </div>
 </section>
@@ -78,60 +99,15 @@
   </div>
 </section>
 
-<section id="proyectos" class="section section-muted section-anchor">
-  <div class="container">
-    <div class="section-heading">
-      <p class="eyebrow">Trabajo aplicado</p>
-      <h2>Proyectos destacados</h2>
-      <p>Soluciones construidas para seguimiento, calidad de datos y acceso a información.</p>
-    </div>
-
-    <div class="projects-grid">
-      <article class="project-card project-featured">
-        <div class="project-number">01</div>
-        <p class="project-type">Business Intelligence</p>
-        <h3>Tableros de seguimiento regional</h3>
-        <p>Indicadores operativos y de salud para Bolívar, Córdoba y Sucre, con métricas DAX, control de calidad y seguimiento mensual.</p>
-        <div class="tags"><span>Power BI</span><span>DAX</span><span>Power Query</span></div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-number">02</div>
-        <p class="project-type">Automatización</p>
-        <h3>Procesamiento y validación de información</h3>
-        <p>Flujos para consolidar archivos, validar estructuras y automatizar consultas y certificados mediante Python y APIs.</p>
-        <div class="tags"><span>Python</span><span>APIs</span><span>Excel</span></div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-number">03</div>
-        <p class="project-type">Aplicación web</p>
-        <h3>Seguimiento de actividades Región 3</h3>
-        <p>Tablero compartido para crear, asignar y controlar actividades con persistencia centralizada.</p>
-        <a class="project-link" href="https://seguimiento-actividades-r3.vercel.app/" target="_blank" rel="noopener noreferrer">Ver proyecto <span aria-hidden="true">↗</span></a>
-        <div class="tags"><span>Next.js</span><span>Base de datos</span><span>Vercel</span></div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-number">04</div>
-        <p class="project-type">Consulta de servicios</p>
-        <h3>Portal de consulta CUPS</h3>
-        <p>Herramienta para consultar prestadores y servicios por departamento y municipio en la Región 3.</p>
-        <a class="project-link" href="https://sites.google.com/view/consulta-cups-r3/consulta-cups-r3" target="_blank" rel="noopener noreferrer">Ver proyecto <span aria-hidden="true">↗</span></a>
-        <div class="tags"><span>Apps Script</span><span>Datos</span><span>UX</span></div>
-      </article>
-    </div>
-  </div>
-</section>
-
 <section id="inteligencia-artificial" class="section section-anchor">
   <div class="container">
-    <div class="section-heading"><p class="eyebrow">IA en mi trabajo</p><h2>De la idea a una solución real, con apoyo de IA.</h2><p>Utilizo IA como apoyo para planear, programar, depurar y documentar. Mi trabajo incluye definir los requisitos, revisar el código y comprobar que cada resultado responda a la necesidad.</p></div>
+    <div class="section-heading"><p class="eyebrow">IA en mi trabajo</p><h2>IA aplicada.<br>Criterio humano.</h2><p>Uso ChatGPT y Codex para desarrollar, depurar y documentar; Claude y NotebookLM como apoyo para organizar y analizar información. Defino los requisitos, reviso los resultados y valido cada solución frente a sus fuentes.</p></div>
+    <div class="ai-training"><span>Formación reciente · agosto–septiembre 2026</span><h3>Programa de Inteligencia Artificial Aplicada para FOMAG</h3><p>Prompts, extracción y clasificación de información, apoyo a PQRS, automatización y uso de herramientas de IA en procesos de trabajo.</p></div>
     <div class="projects-grid">
-      <article class="project-card"><p class="project-type">Desarrollo asistido por IA</p><h3>Portafolio profesional JCQM.DEV</h3><p>Construcción y mejora de este portafolio con apoyo de IA: componentes Angular, identidad visual, temas claro y oscuro y una animación anime 2D personalizada.</p><a class="project-link" href="https://github.com/JeanQuintana-Dev/portafolio" target="_blank" rel="noopener noreferrer">Ver código ↗</a><div class="tags"><span>Angular</span><span>Animación 2D</span><span>Codex</span></div></article>
-      <article class="project-card"><p class="project-type">Desarrollo asistido por IA</p><h3>Sitio web de psicología clínica</h3><p>Desarrollo y ajustes del sitio de Ángela Álvarez con apoyo de IA, incluyendo diseño adaptable, identidad visual y acceso a canales de contacto y agendamiento.</p><a class="project-link" href="https://angela-alvarez-psicologia.vercel.app/" target="_blank" rel="noopener noreferrer">Ver sitio ↗</a><div class="tags"><span>Web</span><span>UX</span><span>IA aplicada</span></div></article>
-      <article class="project-card"><p class="project-type">Automatización asistida por IA</p><h3>Consultas y procesamiento con Python</h3><p>Desarrollo iterativo de scripts con apoyo de IA para consultar APIs, recorrer contratos paginados, extraer tarifas y generar archivos de salida, incorporando pausas entre solicitudes y control de errores.</p><div class="tags"><span>Python</span><span>APIs</span><span>Excel / CSV</span></div></article>
-      <article class="project-card"><p class="project-type">Análisis asistido por IA</p><h3>Indicadores y reportes de gestión</h3><p>Apoyo de IA para formular y corregir cálculos DAX y Excel, estructurar comparativas de indicadores y preparar explicaciones visuales. Revisión de cálculos y conclusiones frente a las fuentes.</p><div class="tags"><span>Power BI</span><span>DAX</span><span>Validación de datos</span></div></article>
+      <article class="project-card"><p class="project-type">Desarrollo asistido por IA</p><h3>Portafolio profesional JCQM.DEV</h3><p>Construcción y mejora de este portafolio con apoyo de IA: componentes Angular, identidad visual, temas claro y oscuro y una animación anime 2D personalizada.</p><a class="project-link" href="https://github.com/JeanQuintana-Dev/portafolio" target="_blank" rel="noopener noreferrer">Ver código</a><div class="tags"><span>Angular</span><span>Animación 2D</span><span>Codex</span></div></article>
+      <article class="project-card"><p class="project-type">Desarrollo asistido por IA</p><h3>Sitio web de psicología clínica</h3><p>Desarrollo y ajustes del sitio de Ángela Álvarez con apoyo de IA, incluyendo diseño adaptable, identidad visual, agendamiento con Doctoralia y enlaces a WhatsApp, Wompi e Instagram.</p><a class="project-link" href="https://angela-alvarez-psicologia.vercel.app/" target="_blank" rel="noopener noreferrer">Ver sitio</a><div class="tags"><span>Web</span><span>UX</span><span>IA aplicada</span></div></article>
+      <article class="project-card"><p class="project-type">Automatización asistida por IA</p><h3>Consultas y procesamiento con Python</h3><p>Desarrollo iterativo de scripts con apoyo de IA para consultar APIs, recorrer contratos paginados de HORUS, relacionar tarifas y CUPS y generar archivos CSV, incorporando pausas entre solicitudes y control de errores.</p><div class="tags"><span>Python</span><span>APIs</span><span>Excel / CSV</span></div></article>
+      <article class="project-card"><p class="project-type">Análisis asistido por IA</p><h3>Indicadores y reportes de gestión</h3><p>Apoyo de IA para formular y corregir cálculos DAX y Excel, estructurar comparativas de indicadores, normalizar la matriz PAI y estructurar datos de Promoción y Mantenimiento. Revisión de cálculos y conclusiones frente a las fuentes.</p><div class="tags"><span>Power BI</span><span>DAX</span><span>Validación de datos</span></div></article>
     </div>
   </div>
 </section>

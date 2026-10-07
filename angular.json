@@ -97,7 +97,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"  
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           }
         }
@@ -105,6 +105,6 @@
     }
   },
   "cli": {
-    "analytics": "46f1bffb-5dfd-418d-960c-49233e17ab54"
+    "analytics": false
   }
 }
