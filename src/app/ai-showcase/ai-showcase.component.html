@@ -1,7 +1,7 @@
 <section id="inteligencia-artificial" class="ai-section">
   <div class="container">
     <div class="ai-layout">
-      <div appReveal class="ai-intro">
+      <div appReveal [motionDistance]="112" class="ai-intro">
         <p class="kicker">IA aplicada</p>
         <h2>Del contexto<br>al código,<br><span>con criterio.</span></h2>
         <p class="intro-copy">Integro IA en mi trabajo para construir soluciones, automatizar procesos y dar claridad a los datos.</p>
@@ -11,7 +11,7 @@
         <p class="signature">Cada resultado pasa por mi revisión técnica.</p>
       </div>
       <div class="ai-cases">
-        <p class="cases-label">Así la llevo a proyectos reales</p>
+        <p appReveal class="cases-label">Así la llevo a proyectos reales</p>
         @for (item of cases; track item.title; let index = $index) {
           <article appReveal [motionDelay]="index * 55" class="ai-case" [class.expanded]="active === index">
             <h3><button type="button" (click)="toggle(index)" [attr.aria-expanded]="active === index" [attr.aria-controls]="'ai-detail-' + index">

@@ -27,19 +27,19 @@
 
 <section id="proyectos" class="section section-muted section-anchor">
   <div class="container">
-    <div appReveal class="section-heading projects-heading">
+    <div appReveal [motionDistance]="112" class="section-heading projects-heading">
       <div><p class="eyebrow">Selección de trabajo · 2026</p><h2>Del problema<br>al proyecto.</h2></div>
       <p>Desarrollo web, integración de APIs y analítica para procesos reales. Cada proyecto parte de una necesidad y termina en una herramienta útil.</p>
     </div>
-    <div class="project-filters" role="group" aria-label="Filtrar proyectos por especialidad">
+    <div appReveal [motionDistance]="96" class="project-filters" role="group" aria-label="Filtrar proyectos por especialidad">
       @for (item of categories; track item) {
         <button type="button" [attr.aria-pressed]="category === item" (click)="selectCategory(item)">{{ item }}</button>
       }
     </div>
-    <p class="project-count" aria-live="polite">{{ visibleProjects.length }} proyectos · {{ category }}</p>
+    <p appReveal [motionDistance]="96" class="project-count" aria-live="polite">{{ visibleProjects.length }} proyectos · {{ category }}</p>
     <div class="portfolio-grid">
       @for (project of visibleProjects; track project.id) {
-        <app-project-card appReveal [motionDelay]="$index % 3 * 65" [project]="project" />
+        <app-project-card appReveal [motionDelay]="$index % 3 * 65" [motionDistance]="88" [project]="project" />
       }
     </div>
   </div>
@@ -47,7 +47,7 @@
 
 <section id="habilidades" class="section section-anchor">
   <div class="container">
-    <div appReveal class="section-heading">
+    <div appReveal [motionDistance]="112" class="section-heading">
       <p class="eyebrow">Capacidades</p>
       <h2>Habilidades técnicas</h2>
       <p>Un perfil híbrido que integra análisis, automatización y desarrollo.</p>
@@ -104,7 +104,7 @@
 <section id="sobre-mi" class="section section-anchor">
   <div class="container">
     <div class="row g-5 align-items-start">
-      <div class="col-lg-5">
+      <div appReveal [motionDistance]="112" class="col-lg-5">
         <p class="eyebrow">Sobre mí</p>
         <h2 class="about-title">Tecnología con enfoque práctico.</h2>
         <p class="about-copy">Me especializo en comprender procesos, ordenar la información y construir soluciones que realmente usa el equipo. Combino criterio analítico, comunicación y desarrollo técnico.</p>
