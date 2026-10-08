@@ -1,6 +1,6 @@
 import { afterNextRender, Component, ElementRef, Input, NgZone, OnChanges, OnDestroy, ViewChild } from '@angular/core';
 
-export type ByteGesture = 'idle' | 'walk' | 'wave' | 'yawn' | 'smile' | 'think' | 'dance';
+export type ByteGesture = 'idle' | 'walk' | 'wave' | 'yawn' | 'smile' | 'think' | 'dance' | 'grabbed' | 'falling' | 'landed';
 const hold = (frame: number, count: number) => Array<number>(count).fill(frame);
 export const byteFrames: Record<ByteGesture, readonly number[]> = {
   idle: [...hold(24, 34), 19, 20, 19, ...hold(24, 34)],
@@ -9,6 +9,9 @@ export const byteFrames: Record<ByteGesture, readonly number[]> = {
   yawn: [...hold(24, 2), 12, 12, ...hold(13, 3), ...hold(14, 4), ...hold(15, 8), ...hold(14, 4), ...hold(13, 3), 16, 16, 17, 17, ...hold(24, 4)],
   smile: [24, 24, 21, 21, ...hold(22, 12), ...hold(21, 3), ...hold(24, 5)],
   think: [24, 24, ...hold(23, 18), ...hold(24, 4)],
+  grabbed: [...hold(25, 4), ...hold(26, 4)],
+  falling: [25],
+  landed: [...hold(27, 3), ...hold(28, 4), 24, 24],
   dance: Array.from({ length: 4 }, () => [0, 1, 2, 3, 4, 5]).flat()
 };
 
@@ -43,7 +46,7 @@ export class ByteCharacterComponent implements OnChanges, OnDestroy {
   ngOnChanges() { this.epoch = 0; if (this.ready) this.zone.runOutsideAngular(() => this.sync()); }
   private sync() {
     this.stop();
-    if (!this.active || this.reduced || !this.animated || document.hidden) { this.paint(24); return; }
+    if (!this.active || this.reduced || !this.animated || document.hidden) { this.paint(this.gesture === 'grabbed' || this.gesture === 'falling' ? 25 : 24); return; }
     this.raf = requestAnimationFrame(this.tick);
   }
   private tick = (time: number) => {
@@ -52,7 +55,7 @@ export class ByteCharacterComponent implements OnChanges, OnDestroy {
     if (!this.epoch) this.epoch = time;
     const frames = byteFrames[this.gesture];
     const index = Math.floor((time - this.epoch) / (this.gesture === 'walk' ? 1000 / 12 : 100));
-    const looping = this.gesture === 'walk' || this.gesture === 'idle';
+    const looping = this.gesture === 'walk' || this.gesture === 'idle' || this.gesture === 'grabbed';
     this.paint(frames[looping ? index % frames.length : Math.min(index, frames.length - 1)]);
     this.raf = requestAnimationFrame(this.tick);
   };

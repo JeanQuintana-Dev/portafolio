@@ -1,21 +1,21 @@
-<div #actor class="byte-actor" [hidden]="hidden" [class.chat-open]="open" (pointerenter)="engage(true)" (pointerleave)="engage(false)" (focusin)="engage(true)" (focusout)="engage(false)">
+<div #actor class="byte-actor" [hidden]="hidden" [class.chat-open]="open" [class.is-held]="dragging" [class.is-falling]="falling" (pointerenter)="engage(true)" (pointerleave)="engage(false)" (focusin)="engage(true)" (focusout)="engage(false)">
   <span class="byte-bubble" aria-hidden="true">{{ bubble }}</span>
-  <button #spriteButton class="byte-sprite-button" type="button" (click)="toggleChat()" [attr.aria-expanded]="open" aria-controls="byte-chat" aria-label="Hablar con Byte, la mascota de Jean">
+  <button #spriteButton class="byte-sprite-button" type="button" (pointerdown)="grab($event)" (click)="spriteClick($event)" (dragstart)="$event.preventDefault()" [attr.aria-expanded]="open" aria-controls="byte-chat" aria-label="Hablar con Byte, la mascota de Jean" aria-describedby="byte-drag-hint">
     <span class="byte-sprite"><app-byte-character [gesture]="gesture" [sequence]="gestureSequence" [active]="!hidden" /></span>
-    <span class="byte-shadow" aria-hidden="true"></span><span class="byte-name">BYTE</span>
+    <span class="byte-shadow" aria-hidden="true"></span><span class="byte-name">BYTE</span><span id="byte-drag-hint" class="visually-hidden">Haz clic para conversar o arrástrame para moverme. Al soltarme caeré al suelo.</span>
   </button>
   <button class="hide-byte" type="button" (click)="setHidden(true)" aria-label="Ocultar a Byte" title="Ocultar a Byte">×</button>
 </div>
-@if (hidden) { <button type="button" class="restore-byte" (click)="setHidden(false)">🕹️ Mostrar Byte</button> }
+@if (hidden) { <button type="button" class="restore-byte" (click)="setHidden(false)"><i class="fa-solid fa-robot" aria-hidden="true"></i> Mostrar Byte</button> }
 @if (open && !hidden) {
   <section id="byte-chat" role="dialog" aria-label="Chat con Byte sobre Jean" class="byte-chat" [style.left.px]="panelLeft" (keydown.escape)="closeChat()">
-    <header><div class="chat-avatar"><app-byte-character [animated]="false" /></div><div><h2>Byte <span>compañero de Jean</span></h2><p>Unos píxeles, muchas buenas ideas.</p></div><button #closeButton type="button" (click)="closeChat()" aria-label="Cerrar chat con Byte">×</button></header>
+    <header><div class="chat-avatar"><app-byte-character [animated]="false" /></div><div><h2>Byte <span>compañero de Jean</span></h2><p>Unos píxeles, muchas buenas ideas.</p></div><button #closeButton type="button" (click)="closeChat()" aria-label="Cerrar chat con Byte"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></header>
     <div #messagesBox class="messages" role="log" aria-label="Conversación" aria-live="polite" aria-relevant="additions text">
       @for (message of messages; track $index) { <div class="message" [class.mine]="message.author === 'you'"><small>{{ message.author === 'byte' ? 'Byte' : 'Tú' }}</small><p>{{ message.text }}</p></div> }
     </div>
     <div class="quick-topics" aria-label="Preguntas sugeridas">@for (topic of topics; track topic) { <button type="button" (click)="send(topic)">{{ topic }}</button> }</div>
-    <form (ngSubmit)="send()"><label class="visually-hidden" for="byte-question">Pregunta sobre Jean</label><input id="byte-question" name="question" [(ngModel)]="input" maxlength="240" placeholder="Pregúntame sobre Jean…" autocomplete="off"><button type="submit" [disabled]="!input.trim()" aria-label="Enviar pregunta">↑</button></form>
-    <div class="byte-actions"><button type="button" (click)="coffee()">☕ Dar café</button><button type="button" (click)="perform('wave')">👋 Saludar</button><button type="button" (click)="perform('yawn')">🥱 Bostezar</button><button type="button" (click)="dance()">♫ Bailar</button><button type="button" (click)="toggleWalk()" [attr.aria-pressed]="paused" [disabled]="reduced">{{ paused ? 'Reanudar paseo' : 'Pausar paseo' }}</button></div>
+    <form (ngSubmit)="send()"><label class="visually-hidden" for="byte-question">Pregunta sobre Jean</label><input id="byte-question" name="question" [(ngModel)]="input" maxlength="240" placeholder="Pregúntame sobre Jean…" autocomplete="off"><button type="submit" [disabled]="!input.trim()" aria-label="Enviar pregunta"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button></form>
+    <div class="byte-actions"><button type="button" (click)="coffee()"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> Dar café</button><button type="button" (click)="perform('wave')"><i class="fa-solid fa-hand" aria-hidden="true"></i> Saludar</button><button type="button" (click)="perform('yawn')"><i class="fa-solid fa-face-tired" aria-hidden="true"></i> Bostezar</button><button type="button" (click)="dance()"><i class="fa-solid fa-music" aria-hidden="true"></i> Bailar</button><button type="button" (click)="toggleWalk()" [attr.aria-pressed]="paused" [disabled]="reduced">{{ paused ? 'Reanudar paseo' : 'Pausar paseo' }}</button></div>
     <p class="chat-note">Guía local · respuestas del portafolio</p>
   </section>
 }

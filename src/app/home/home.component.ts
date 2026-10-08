@@ -1,3 +1,4 @@
+import { RevealDirective } from '../motion/reveal.directive';
 import { Component } from '@angular/core';
 import { AiShowcaseComponent } from '../ai-showcase/ai-showcase.component';
 import { WorkstationComponent } from '../workstation/workstation.component';
@@ -7,7 +8,7 @@ import { ProjectCategory, projects } from './projects';
 
 @Component({
   selector: 'app-home',
-  imports: [WorkstationComponent, AmbientComponent, ProjectCardComponent, AiShowcaseComponent],
+  imports: [RevealDirective, WorkstationComponent, AmbientComponent, ProjectCardComponent, AiShowcaseComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
