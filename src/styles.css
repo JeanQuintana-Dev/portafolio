@@ -76,7 +76,11 @@ button:focus-visible {
   }
 }
 
-/* Reveal only enhances a fully readable server-rendered page. */
-.motion-pending{opacity:0;transform:translateY(22px)}.motion-in{animation:section-arrive .7s cubic-bezier(.22,1,.36,1) var(--motion-delay,0ms) both}@keyframes section-arrive{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+/* Content remains visible before hydration and without JavaScript. Scroll supplies
+   progress directly; no timed entrance or competing transform transition. */
+.motion-scroll {
+  opacity: var(--motion-opacity, 1);
+  transform: translate3d(0, var(--motion-rise, 0px), 0);
+}
 .reading-progress{display:none}@supports(animation-timeline:scroll()){.reading-progress{display:block;position:fixed;top:0;left:0;height:3px;width:100%;z-index:200;background:linear-gradient(90deg,#883235,#efb9bf);transform-origin:left;animation:reading-progress linear both;animation-timeline:scroll(root)}}@keyframes reading-progress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@media(prefers-reduced-motion:reduce){.motion-pending{opacity:1;transform:none}.motion-in{animation:none}.reading-progress{display:none}}
+@media(prefers-reduced-motion:reduce){.motion-scroll{opacity:1;transform:none}.reading-progress{display:none}}
