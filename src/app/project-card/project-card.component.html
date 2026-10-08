@@ -6,17 +6,7 @@
                 <img src="/psicologia-preview.webp" alt="" loading="lazy" width="1280" height="800">
               </div>
             } @else {
-              <svg class="project-symbol" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                @if (project.id === 'cups') {
-                  <circle cx="24" cy="24" r="13"/><path d="m34 34 12 12M18 24h12M24 18v12"/>
-                } @else if (project.visual === 'data') {
-                  <path d="M10 8h36v40H10zM10 18h36M23 18v30M10 28h36M10 38h36"/><path d="M16 13h2M30 23h10M30 33h7M30 43h11"/>
-                } @else if (project.visual === 'pipeline') {
-                  <rect x="5" y="20" width="12" height="16" rx="3"/><rect x="39" y="20" width="12" height="16" rx="3"/><path d="M17 28h22m-7-6 6 6-6 6M11 14v-4h34v4M11 42v4h34v-4"/>
-                } @else {
-                  <rect x="8" y="10" width="40" height="36" rx="5"/><path d="M8 19h40M15 28h4m7 0h14M15 36h4m7 0h14"/>
-                }
-              </svg>
+              <i class="project-symbol fa-solid" [class.fa-magnifying-glass]="project.id === 'cups'" [class.fa-table-cells]="project.id !== 'cups' && project.visual === 'data'" [class.fa-diagram-project]="project.visual === 'pipeline'" [class.fa-list-check]="project.id !== 'cups' && project.visual !== 'data' && project.visual !== 'pipeline'"></i>
               <div class="project-cover-copy"><span>{{ project.category }}</span><strong>{{ coverLabel }}</strong></div>
               <span class="cover-code">{{ project.tags[0] }}</span>
             }
@@ -28,8 +18,8 @@
             <p class="project-outcome">{{ project.outcome }}</p>
             <div class="tags">@for (tag of project.tags; track tag) { <span>{{ tag }}</span> }</div>
             <div class="project-actions">
-              @if (project.url) { <a [href]="project.url" target="_blank" rel="noopener noreferrer" [attr.aria-label]="'Ver proyecto: ' + project.title">Ver proyecto</a> }
-              @if (project.repo) { <a [href]="project.repo" target="_blank" rel="noopener noreferrer" [attr.aria-label]="'Ver código: ' + project.title">Ver código</a> }
+              @if (project.url) { <a [href]="project.url" target="_blank" rel="noopener noreferrer" [attr.aria-label]="'Ver proyecto: ' + project.title">Ver proyecto <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a> }
+              @if (project.repo) { <a [href]="project.repo" target="_blank" rel="noopener noreferrer" [attr.aria-label]="'Ver código: ' + project.title"><i class="fa-brands fa-github" aria-hidden="true"></i> Ver código</a> }
               @if (!project.url) { <span class="internal-project">Proyecto interno · descripción técnica</span> }
             </div>
           </div>

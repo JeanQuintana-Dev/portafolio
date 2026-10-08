@@ -9,8 +9,8 @@
           Soy Jean Quintana. Construyo tableros, automatizaciones y experiencias web que convierten información compleja en soluciones útiles. Combino analítica, desarrollo e IA aplicada con experiencia en salud y gestión regional.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="#proyectos">Ver proyectos</a>
-          <a class="btn btn-outline-light btn-lg" href="#contacto">Contactarme</a>
+          <a class="btn btn-primary btn-lg" href="#proyectos">Ver proyectos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a class="btn btn-outline-light btn-lg" href="#contacto"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Contactarme</a>
         </div>
         <ul class="hero-highlights" aria-label="Especialidades principales">
           <li>Power BI y DAX</li>
@@ -19,7 +19,7 @@
         </ul>
       </div>
       <div class="col-lg-6 text-center">
-        <div class="workstation-wrap"><app-workstation /><div class="studio-note"><span>Mi espacio de trabajo</span><strong>Desarrollo + datos + creatividad</strong></div></div>
+        <div class="workstation-wrap"><app-workstation /></div>
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@
 
 <section id="proyectos" class="section section-muted section-anchor">
   <div class="container">
-    <div class="section-heading projects-heading">
+    <div appReveal class="section-heading projects-heading">
       <div><p class="eyebrow">Selección de trabajo · 2026</p><h2>Del problema<br>al proyecto.</h2></div>
       <p>Desarrollo web, integración de APIs y analítica para procesos reales. Cada proyecto parte de una necesidad y termina en una herramienta útil.</p>
     </div>
@@ -39,7 +39,7 @@
     <p class="project-count" aria-live="polite">{{ visibleProjects.length }} proyectos · {{ category }}</p>
     <div class="portfolio-grid">
       @for (project of visibleProjects; track project.id) {
-        <app-project-card [project]="project" />
+        <app-project-card appReveal [motionDelay]="$index % 3 * 65" [project]="project" />
       }
     </div>
   </div>
@@ -47,54 +47,54 @@
 
 <section id="habilidades" class="section section-anchor">
   <div class="container">
-    <div class="section-heading">
+    <div appReveal class="section-heading">
       <p class="eyebrow">Capacidades</p>
       <h2>Habilidades técnicas</h2>
       <p>Un perfil híbrido que integra análisis, automatización y desarrollo.</p>
     </div>
 
     <div class="skills-grid">
-      <article class="skill-card">
+      <article appReveal class="skill-card">
         <i class="fa-solid fa-chart-column" aria-hidden="true"></i>
         <h3>Power BI y DAX</h3>
         <p>Modelado, indicadores, dashboards ejecutivos y análisis orientado a decisiones.</p>
       </article>
-      <article class="skill-card">
+      <article appReveal class="skill-card">
         <i class="fa-solid fa-table" aria-hidden="true"></i>
         <h3>Excel y Power Query</h3>
         <p>Depuración, normalización y consolidación de grandes volúmenes de información.</p>
       </article>
-      <article class="skill-card">
+      <article appReveal class="skill-card">
         <i class="fa-brands fa-python" aria-hidden="true"></i>
         <h3>Python</h3>
         <p>Automatización, validación de archivos, procesamiento de datos e integración con APIs.</p>
       </article>
-      <article class="skill-card">
+      <article appReveal class="skill-card">
         <i class="fa-brands fa-microsoft" aria-hidden="true"></i>
         <h3>Power Platform</h3>
         <p>Soluciones empresariales con Power Apps, Power Automate y fuentes Microsoft 365.</p>
       </article>
-      <article class="skill-card">
+      <article appReveal class="skill-card">
         <i class="fa-solid fa-database" aria-hidden="true"></i>
         <h3>SQL y datos</h3>
         <p>Consultas, estructuras relacionales, calidad y gobierno de información.</p>
       </article>
-      <article class="skill-card">
+      <article appReveal class="skill-card">
         <i class="fa-brands fa-angular" aria-hidden="true"></i>
         <h3>Desarrollo web</h3>
         <p>Interfaces adaptables con Angular, JavaScript, TypeScript, HTML y CSS.</p>
       </article>
-      <article class="skill-card">
+      <article appReveal class="skill-card">
         <i class="fa-solid fa-gears" aria-hidden="true"></i>
         <h3>Automatización</h3>
         <p>Reducción de tareas manuales mediante flujos, scripts y servicios conectados.</p>
       </article>
-      <article class="skill-card">
+      <article appReveal class="skill-card">
         <i class="fa-brands fa-git-alt" aria-hidden="true"></i>
         <h3>Git y despliegue</h3>
         <p>Control de versiones, GitHub y publicación continua de aplicaciones.</p>
       </article>
-      <article class="skill-card"><i class="fa-solid fa-brain" aria-hidden="true"></i><h3>Inteligencia artificial aplicada</h3><p>Uso de ChatGPT y Codex para crear y depurar código, diseñar interfaces, documentar soluciones y apoyar el análisis de datos. Validación de resultados y ajustes con criterio técnico.</p></article>
+      <article appReveal class="skill-card"><i class="fa-solid fa-brain" aria-hidden="true"></i><h3>Inteligencia artificial aplicada</h3><p>Uso de ChatGPT y Codex para crear y depurar código, diseñar interfaces, documentar soluciones y apoyar el análisis de datos. Validación de resultados y ajustes con criterio técnico.</p></article>
     </div>
   </div>
 </section>
@@ -111,17 +111,17 @@
       </div>
       <div class="col-lg-7">
         <div class="timeline">
-          <article class="timeline-item">
+          <article appReveal class="timeline-item">
             <span>Actualidad</span>
             <h3>Dirección Región 3 · FOMAG</h3>
             <p>Analítica, automatización, seguimiento de indicadores y soluciones digitales para procesos regionales en Bolívar, Córdoba y Sucre.</p>
           </article>
-          <article class="timeline-item">
+          <article appReveal class="timeline-item">
             <span>Experiencia profesional</span>
             <h3>Banco de la República de Colombia</h3>
             <p>Desarrollo de soluciones internas con Power BI, Power Automate y Power Apps en la Unidad de Seguridad Electrónica.</p>
           </article>
-          <article class="timeline-item">
+          <article appReveal class="timeline-item">
             <span>Formación</span>
             <h3>Universidad de Cartagena</h3>
             <p>Ingeniería de Sistemas, con énfasis en desarrollo de software, análisis y documentación técnica.</p>

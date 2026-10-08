@@ -3,18 +3,14 @@ import type { ShaderInstance } from 'shaders/js';
 
 @Component({
   selector: 'app-ambient',
-  template: `<canvas #canvas aria-hidden="true" style="width:100%;height:100%"></canvas>
-    <button type="button" [hidden]="!ready" (click)="toggle()" [attr.aria-pressed]="paused" [disabled]="reduced">
-      {{ paused || reduced ? 'Fondo en pausa' : 'Pausar fondo' }}
-    </button>`,
-  styles: [':host{display:block;position:absolute;inset:0;pointer-events:none;}canvas{display:block;opacity:.48;transition:opacity .4s}button{position:absolute;right:1rem;top:1rem;z-index:2;pointer-events:auto;border:1px solid #efb9bf60;border-radius:999px;background:#341319;color:#ffe8ec;padding:.45rem .8rem;font-size:.875rem}button[hidden]{display:none}']
+  template: `<div class="ambient-wash" aria-hidden="true"><span class="glow glow-a"></span><span class="glow glow-b"></span><div class="ambient-grid"></div><svg class="contours" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice"><path d="M-100 650C200 100 550 950 1300 150"/><path d="M-100 690C240 160 620 990 1300 210"/><path d="M-100 730C280 220 690 1030 1300 270"/></svg></div><canvas #canvas aria-hidden="true" style="width:100%;height:100%"></canvas>`,
+  styles: [`:host{display:block;position:absolute;inset:0;pointer-events:none;overflow:hidden}canvas{position:absolute;inset:0;display:block;opacity:.48;transition:opacity .4s}.ambient-wash{position:absolute;inset:0;overflow:hidden}.glow{position:absolute;width:55vw;min-width:400px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#b65c6960,transparent 65%);will-change:transform}.glow-a{right:-15%;top:-40%;animation:drift-a 22s ease-in-out infinite alternate}.glow-b{left:-25%;bottom:-60%;background:radial-gradient(circle,#efb9bf26,transparent 65%);animation:drift-b 28s ease-in-out infinite alternate}.ambient-grid{position:absolute;inset:0;background-image:linear-gradient(#efb9bf0a 1px,transparent 1px),linear-gradient(90deg,#efb9bf0a 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(90deg,transparent,#000)}.contours{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:#efb9bf24;stroke-width:1;stroke-dasharray:300 1800;animation:flow-lines 24s linear infinite}@keyframes flow-lines{to{stroke-dashoffset:-2100}}@keyframes drift-a{to{transform:translate(-12%,25%) scale(1.16)}}@keyframes drift-b{to{transform:translate(20%,-20%) scale(.92)}}@media(prefers-reduced-motion:reduce){.glow,.contours{animation:none;will-change:auto}}`]
+
 })
 export class AmbientComponent implements OnDestroy {
   @ViewChild('canvas') canvas!: ElementRef<HTMLCanvasElement>;
   ready = false;
-  paused = false;
   reduced = false;
-  private sync = () => {};
   private shader?: ShaderInstance;
   private destroyed = false;
   private cleanup = () => {};
@@ -22,7 +18,6 @@ export class AmbientComponent implements OnDestroy {
   constructor(private zone: NgZone) { afterNextRender(() => { void this.init(); }); }
   ngOnDestroy() { this.destroyed = true; this.cleanup(); this.shader?.destroy(); }
 
-  toggle() { this.paused = !this.paused; this.sync(); }
 
   private async init() {
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -46,10 +41,9 @@ export class AmbientComponent implements OnDestroy {
       let visible = true;
       const sync = () => {
         this.zone.run(() => this.reduced = motion.matches);
-        if (this.paused || motion.matches || document.hidden || !visible) shader.pause();
+        if (motion.matches || document.hidden || !visible) shader.pause();
         else shader.resume();
       };
-      this.sync = sync;
       const resize = new ResizeObserver(() => shader.resize());
       const visibility = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); });
       resize.observe(canvas); visibility.observe(canvas);

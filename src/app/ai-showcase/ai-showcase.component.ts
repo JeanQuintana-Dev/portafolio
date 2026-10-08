@@ -1,7 +1,9 @@
+import { RevealDirective } from '../motion/reveal.directive';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-ai-showcase',
+  imports: [RevealDirective],
   templateUrl: './ai-showcase.component.html',
   styleUrl: './ai-showcase.component.css'
 })
